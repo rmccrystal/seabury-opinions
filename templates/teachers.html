@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+{% block title %}Teachers{% endblock %}
+
+{% block content %}
+<div class="card-columns container my-3">
+    {% for teacher in teachers %}
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h6 class="card-title float-left">{{ teacher.name }}</h6>
+                    <div class="float-right" >
+                        <i class="fas fa-arrow-up"></i>
+                        <span class="badge badge-primary">{{ teacher.score }}</span>
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <!-- <a class="btn btn-primary float-right" href="#">View More</a> -->
+                </div>
+            </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

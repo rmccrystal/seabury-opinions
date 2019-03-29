@@ -1,0 +1,45 @@
+
+{% extends 'base.html' %}
+{% block title %}Comments{% endblock %}
+
+{% block content %}
+    {% if errors %}
+        <h3 class="text-center">The following errors occurred</h3>
+        <div class="errors container my-2" role="alert">
+            {% for error in errors %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+<div class="comment-form">
+<form method="post">
+    <div class="form-group">
+        <label for="comment-title">Title</label>
+        <input type="text" id="comment-title" name="title" class="form-control comment-title" placeholder="title" required>
+    </div>
+    <div class="form-group">
+        <label for="comment-text">Comment</label>
+        <textarea name="comment" id="comment-text" class="form-control" rows="6" placeholder="Comment" required></textarea>
+    </div>
+        <button class="btn btn-primary submit-button" type="submit">Submit</button>
+</form>
+<hr />
+<div class="comment-list">
+    <h1 class="text-center">Comments</h1>
+    {% for comment in comments[::-1] %}
+         <div class="comment card my-4 bg-light">
+            <div class="card-body text-dark">
+                <h5 class="card-title">{{ comment.get_title() }}</h5>
+                <p class="card-text">{{ comment.get_comment() }}</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">{{ comment.get_timestamp() }}</small>
+            </div>
+         </div>
+    {% endfor %}
+
+</div>
+</div>
+{% endblock %}
