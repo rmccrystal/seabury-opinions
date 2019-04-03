@@ -10,10 +10,13 @@ class Comment:
     comment: str
     time: datetime.datetime
 
-    def __init__(self, title: str, comment: str) -> None:
+    def __init__(self, title: str, comment: str, time: int=None) -> None:
         self.title = utils.escape(title)[:100]
         self.comment = utils.escape(comment)[:2000]
-        self.time = datetime.datetime.now()
+        if not time:
+            self.time = datetime.datetime.now()
+        else:
+            self.time = datetime.datetime(second=time)
 
     def get_title(self) -> str:
         return self.title
