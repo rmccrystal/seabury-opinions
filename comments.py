@@ -10,13 +10,13 @@ class Comment:
     comment: str
     time: datetime.datetime
 
-    def __init__(self, title: str, comment: str, time: int=None) -> None:
+    def __init__(self, title: str, comment: str, time: datetime.datetime=None) -> None:
         self.title = utils.escape(title)[:100]
         self.comment = utils.escape(comment)[:2000]
         if not time:
             self.time = datetime.datetime.now()
         else:
-            self.time = datetime.datetime(second=time)
+            self.time = time
 
     def get_title(self) -> str:
         return self.title
@@ -28,15 +28,23 @@ class Comment:
         return timeago.format(self.time, datetime.datetime.now())
 
 
+
+from database import CommentsDatabase
+
+db = CommentsDatabase()
+
+
 _comments = list()
 
 
 def get_comments() -> List[Comment]:
-    return _comments
+    return db.get_comments_list()
+    #return _comments
 
 
 def _add_comment(comment: Comment) -> None:
-    _comments.append(comment)
+    db.add_comment(comment)
+    #_comments.append(comment)
 
 
 def add_comment(comment_title: str, comment: str) -> None:
