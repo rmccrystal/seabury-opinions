@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_nav.elements import Navbar, View
 import comments as comment_manager
 import teachers as teachers_manager
 from typing import Dict
