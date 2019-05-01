@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-import comments as comment_manager
-import teachers as teachers_manager
+import database.database as db
 from typing import Dict
 
 app = Flask(__name__)
@@ -17,7 +16,7 @@ comment_timeouts = Dict[str, int]
 @app.route('/comments', methods=['GET', 'POST'])
 def comments():
     if request.method == 'GET':
-        return render_template('comments.html', comments=comment_manager.get_comments())
+        return render_template('comments.html', comments=db.get_comment_list())
     if request.method == 'POST':
         errors = list()
         if not request.form.get('title'):
@@ -25,17 +24,14 @@ def comments():
         if not request.form.get('comment'):
             errors.append("Comment does not exist")
         if errors:
-            return render_template('comments.html', comments=comment_manager.get_comments(), errors=errors)
-        comment_manager.add_comment(request.form['title'], request.form['comment'])
+            return render_template('comments.html', comments=db.get_comment_list(), errors=errors)
+        db.add_comment_data(request.form['title'], request.form['comment'])
         return redirect(url_for('comments'))
-
-
-teachers_manager._init_teacher_list()
 
 
 @app.route('/teachers')
 def teachers():
-    return render_template('teachers.html', teachers=teachers_manager.get_teachers())
+    return render_template('teachers.html', teachers=db.get_teacher_list())
 
 
 if __name__ == '__main__':

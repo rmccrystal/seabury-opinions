@@ -31,11 +31,11 @@
     {% for comment in comments[::-1] %}
          <div class="comment card my-4 bg-light">
             <div class="card-body text-dark">
-                <h5 class="card-title">{{ comment.get_title() }}</h5>
-                <p class="card-text">{{ comment.get_comment() }}</p>
+                <h5 class="card-title">{{ comment.title }}</h5>
+                <p class="card-text">{{ comment.comment }}</p>
             </div>
             <div class="card-footer">
-                <small class="text-muted">{{ comment.get_timestamp() }}</small>
+                <small class="text-muted">{{ comment.get_relative_timestamp() }}</small>
             </div>
          </div>
     {% endfor %}

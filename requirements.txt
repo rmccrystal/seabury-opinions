@@ -1,6 +1,6 @@
 flask
 timeago
 Flask-Session
-gspread
-oauth2client
-pygsheets
+sqlalchemy
+mysqlclient
+flask_restful
