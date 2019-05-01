@@ -4,7 +4,7 @@ import sqlalchemy as db
 from sqlalchemy.orm import sessionmaker
 
 
-engine = db.create_engine('mysql://db:password@db:3306/db', echo=True)
+engine = db.create_engine('mysql://db:pass420@db:3306/db', echo=True)
 conn = engine.connect()
 meta = db.MetaData()
 meta.create_all(engine)
