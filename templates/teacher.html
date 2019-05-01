@@ -1,0 +1,14 @@
+
+{% extends 'base.html' %}
+{% block title %}{{ teacher.name }}{% endblock %}
+{% block content %}
+<div class="teacher-info">
+    <h1>{{ teacher.name }}</h1>
+    <p class="lead">{{ teacher.description }}</p>
+</div>
+    {% include 'errors.html' %}
+<div class="comment-form">
+{% include 'comment_form.html' %}<hr />
+{% include 'comment_list.html' %}
+</div>
+{% endblock %}

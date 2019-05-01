@@ -1,0 +1,10 @@
+    {% if errors %}
+        <h3 class="text-center">The following errors occurred</h3>
+        <div class="errors container my-2" role="alert">
+            {% for error in errors %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}

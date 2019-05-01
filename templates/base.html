@@ -12,8 +12,8 @@
     <title>{% block title %}{% endblock %} - Seabury Opinions</title>
 </head>
 <body>
-    <div class="container">
-        {% include 'navbar.html' %}
+    {% include 'navbar.html' %}
+    <div class="container mt-4" style="padding-top: 3rem;">
         {% block content %}{% endblock %}
     </div>
 </body>

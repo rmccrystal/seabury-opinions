@@ -1,0 +1,16 @@
+{% if comments is not None %}
+<div class="comment-list">
+    <h1 class="text-center">Comments</h1>
+    {% for comment in comments[::-1] %}
+         <div class="comment card my-4 bg-light">
+            <div class="card-body text-dark">
+                <h5 class="card-title">{{ comment.title }}</h5>
+                <p class="card-text">{{ comment.comment }}</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">{{ comment.get_relative_timestamp() }}</small>
+            </div>
+         </div>
+    {% endfor %}
+</div>
+{% endif %}
